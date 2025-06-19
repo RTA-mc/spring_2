@@ -1,0 +1,25 @@
+/* Mensajes de éxito */
+.success-message {
+    color: #28a745; /* Verde */
+    background-color: #d4edda;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    border: 1px solid #c3e6cb;
+}
+
+/* Mensajes de error */
+.error-message {
+    color: #dc3545; /* Rojo */
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    border: 1px solid #f5c6cb;
+}
+
+/* Quitar el color amarillo por defecto */
+#message {
+    color: inherit !important;
+    background-color: transparent !important;
+}

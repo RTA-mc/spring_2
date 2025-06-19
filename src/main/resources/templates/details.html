@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <header>
+        <div class="menu container">
+            <img class="logo-1" src="/image/logo.png" alt="logo del restaurante">
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="/image/menu.png" alt="meni imagen">
+            </label>
+
+            <nav class="navbar">
+                
+                <div class="menu-1">
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                    </ul>
+                </div>
+                <h1>Parrila d'Oro</h1>
+                <img class="logo-2" src="/image/logo.png" alt="logo del restaurante ">
+                <h2><span>Bienvenido, <span th:text="${usuario.nombre}">Usuario</span>!</span></h2>
+                <div class="menu-2">
+                    <ul>
+                        <li><a href="#">Redes Sociales</a></li>
+                    </ul>
+                    <div class="socials">
+
+                        <a href="#">
+                            <div class="social">
+                                <img src="/image/s1.svg" alt="wasa">
+                            </div>
+                        </a>
+
+                        <a href="#">
+                            <div class="social">
+                                <img src="/image/s2.svg" alt="wgmail">
+                            </div>
+                        </a>
+
+                        <a href="#">
+                            <div class="social">
+                                <img src="/image/s3.svg" alt="instagram">
+                            </div>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </nav>
+        </div>
+
+        <div class="header-content container">
+            <div class="swiper mySwiper-1">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide" th:if="${#lists.size(productos) > 0}">
+                        <div class="slider">
+                            <div class="slider-txt">
+                                <h2 th:text="${productos[0].nombre}">Nombre producto 1</h2>
+                                <p th:text="${productos[0].descripcion}">Descripción</p>
+                                <div class="botones">
+                                    <a href="#" class="btn-1">comprar</a>
+                                    <a href="#" class="btn-1">menu</a>
+                                </div>
+                            </div>
+
+                            <div class="slider-img">
+                                <img src="/image/pechuga.jpg" alt="pechuga">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide" th:if="${#lists.size(productos) > 9}">
+                        <div class="slider">
+                            <div class="slider-txt">
+                                <h2 th:text="${productos[9].nombre}">Nombre producto 1</h2>
+                                <p th:text="${productos[9].descripcion}">Descripción</p>
+                                <div class="botones">
+                                    <a href="#" class="btn-1">comprar</a>
+                                    <a href="#" class="btn-1">menu</a>
+                                </div>
+                            </div>
+
+                            <div class="slider-img">
+                                <img src="/image/helado_de_vainilla.png" alt="Helado">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide" th:if="${#lists.size(productos) > 7}">
+                        <div class="slider">
+                            <div class="slider-txt">
+                                <h2 th:text="${productos[7].nombre}">Nombre producto 1</h2>
+                                <p th:text="${productos[7].descripcion}">Descripción</p>
+                                <div class="botones">
+                                    <a href="#" class="btn-1">comprar</a>
+                                    <a href="#" class="btn-1">menu</a>
+                                </div>
+                            </div>
+
+                            <div class="slider-img">
+                                <img src="/image/mojarra.avif" alt="mojarra">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+
+            </div>
+        </div>
+
+    </header>
+
+    <main class="products">
+        <div class="tabs container">
+
+
+            <input type="radio" name="tabs" id="tab1" checked="checked" class="tabInput" value="1">
+            <label for="tab1">Comida ligeramente deliciosa</label>
+            <div class="tab">
+                <div class="swiper mySwiper-2" id="swiper1">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/PastaAlfredo.jpeg" alt="Pasta PastaAlfredo">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 2}" class="product-txt">
+                                    <h4 th:text="${productos[2].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[2].descripcion}">descripcion</p>
+                                    <span th:if="${productos[2].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[2].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/empanadas_valle.jpg" alt="Empanadas vallunas">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 2}" class="product-txt">
+                                    <h4 th:text="${productos[5].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[5].descripcion}">descripcion</p>
+                                    <span th:if="${productos[5].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[5].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/ajiaco.webp" alt="ajiaco">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 1}" class="product-txt">
+                                    <h4 th:text="${productos[1].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[1].descripcion}">descripcion</p>
+                                    <span th:if="${productos[1].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[1].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/ensalada_cesar.avif" alt="ensalada cesar">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 8}" class="product-txt">
+                                    <h4 th:text="${productos[8].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[8].descripcion}">descripcion</p>
+                                    <span th:if="${productos[8].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[8].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/sancocho_de_gallina.jpeg" alt="sancocho de gallina">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 3}" class="product-txt">
+                                    <h4 th:text="${productos[3].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[3].descripcion}">descripcion</p>
+                                    <span th:if="${productos[3].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[3].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+            <input type="radio" name="tabs" id="tab2" checked="checked" class="tabInput" value="2">
+            <label for="tab2">Platos fuertes</label>
+            <div class="tab">
+                <div class="swiper mySwiper-2" id="swiper2">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/chuleta_vallu.jpg" alt="Chuleta Valluna">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 6}" class="product-txt">
+                                    <h4 th:text="${productos[6].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[6].descripcion}">descripcion</p>
+                                    <span th:if="${productos[6].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[6].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/mojarra.avif" alt="mojarra">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 2}" class="product-txt">
+                                    <h4 th:text="${productos[7].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[7].descripcion}">descripcion</p>
+                                    <span th:if="${productos[7].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[7].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/pechuga.jpg" alt="pechuga">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 0}" class="product-txt">
+                                    <h4 th:text="${productos[0].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[0].descripcion}">descripcion</p>
+                                    <span th:if="${productos[0].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[0].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/arepa_de_choclo.png" alt="ensalada cesar">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 4}" class="product-txt">
+                                    <h4 th:text="${productos[4].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[4].descripcion}">descripcion</p>
+                                    <span th:if="${productos[4].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[4].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+            <input type="radio" name="tabs" id="tab3" checked="checked" class="tabInput" value="3">
+            <label for="tab3">Postres</label>
+            <div class="tab">
+                <div class="swiper mySwiper-2" id="swiper2">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/batido_de_mora.jpg" alt="Batido de mora">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 10}" class="product-txt">
+                                    <h4 th:text="${productos[10].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[10].descripcion}">descripcion</p>
+                                    <span th:if="${productos[10].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[10].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/tres_leches.jpg" alt="Tres leches">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 11}" class="product-txt">
+                                    <h4 th:text="${productos[11].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[11].descripcion}">descripcion</p>
+                                    <span th:if="${productos[11].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[11].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/pandebono.jpeg" alt="pan de bono">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 12}" class="product-txt">
+                                    <h4 th:text="${productos[12].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[12].descripcion}">descripcion</p>
+                                    <span th:if="${productos[12].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[12].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="product">
+                                <div class="product-img">
+                                    <h4>nuevo</h4>
+                                    <img src="/image/helado_de_vainilla.png" alt="Helado de la casa">
+                                </div>
+                                <div th:if="${#lists.size(productos) > 9}" class="product-txt">
+                                    <h4 th:text="${productos[9].nombre}">nombre del producto</h4>
+                                    <p th:text="${productos[9].descripcion}">descripcion</p>
+                                    <span th:if="${productos[9].precio != null}"
+                                        th:text="${'$' + #numbers.formatDecimal(productos[9].precio, 1, 2)}">
+                                        0.00
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+
+    </main>
+
+    <section class="info container">
+        <div class="info-img">
+            <img src="/image/info.png" alt="sandiwch">
+
+        </div>
+        <div class="info-txt">
+            <h2>Sándwich de la Casa</h2>
+            <p>
+                Un clásico reinventado que combina lo mejor de los sabores tradicionales con un toque gourmet. Este
+                sándwich es una experiencia culinaria diseñada para satisfacer hasta los paladares más exigentes.
+                
+            </p>
+            <p>🍗 Ingredientes Premium:</p>
+            <p> Pollo apanado crujiente: Pechuga de pollo tierna, empanizada con una mezcla de especias secretas y pan
+                artesanal, dorada a la perfección para lograr una textura ultra crujiente por fuera y jugosa por dentro.
+
+                Salsa secreta de la casa: Una mezcla exclusiva de ingredientes frescos (con un toque picante opcional)
+                que realza todos los sabores.
+
+                Pan brioche artesanal: Suave, ligeramente dulce y tostado al punto justo para un exterior crujiente que
+                contrasta con su miga esponjosa.
+
+                Vegetales frescos: Lechuga romana crujiente y tomates maduros en rodajas gruesas.
+
+                Toques finales: Mayonesa casera y queso costeño derretido que aporta cremosidad y un sabor lácteo único.
+            </p>
+            <a href="#" class="btn-2"> Mas Informacion</a>
+        </div>
+
+    </section>
+
+    <section class="horario">
+        <div class="horario-info container">
+
+            <h2>Horario</h2>
+            <div class="horario-txt">
+                <div class="txt">
+                    <h4>Direccion</h4>
+                    <p>
+                        Avenida del Puerto, 45, 08003 Bogota, Colombia
+                    </p>
+                    <p>
+                        Calle del Sabor, 123, Local 4, 28012 Bogota, Colombia 
+                    </p>
+                    <p>
+                        Plaza del Dulce, 7, 41004 Bogota, Colombia
+                    </p>
+                    <p>
+                        Calle de los Sabores, 22, 46002  Bogota, Colombia
+                    </p>
+                    <p>
+                        Calle de la Massa, 15, 29005 Bogota, Colombia
+                    </p>
+                </div>
+                <div class="txt">
+                    <h4>Horario</h4>
+                    <p>
+                        HORARIO DE ATENCIÓN
+                        Lunes a Jueves:
+                        Almuerzo: 12:00 PM - 3:00 PM
+                        Cena: 6:00 PM - 9:00 PM
+
+                        Viernes y Sábado:
+                        Almuerzo: 12:00 PM - 4:00 PM
+                        Cena: 6:00 PM - 10:00 PM
+
+                        Domingo y Festivos:
+                        Brunch: 10:00 AM - 2:00 PM
+                        Cena: 5:00 PM - 8:00 PM
+                    </p>
+                    <p>
+                        HORARIO DE POSTRES
+                        Lunes a Jueves:
+                        Almuerzo: 12:00 PM - 9:00 PM
+
+                        Viernes y Sábado:
+                        Almuerzo: 12:00 PM - 10:00 PM
+
+                        Domingo y Festivos:
+                        Brunch: 10:00 AM - 8:00 PM
+                    </p>
+                </div>
+                <div class="txt">
+                    <h4>Telefono</h4>
+                    <p>320-475-69-21</p>
+                    <p>312-154-23-62</p>
+                    <p>310-247-28-95</p>
+                    <p>247-654-21-41</p>
+                    <p>369-478-54-21</p>
+                </div>
+                <div class="txt">
+                    <h4>Redes sociales</h4>
+                    <p>
+                        Twitter: twitter.com/parriladioro_malaga         
+                        
+                    </p>
+                    <p>
+                        Instagram: instagram.com/parriladioro.rstaurante
+                    </p>
+                    <p>
+                        Facebook: facebook.com/parriladioroTabogo
+                    </p>
+                </div>
+                <div class="socials">
+
+                    <a href="#">
+                        <div class="social">
+                            <img src="/image/s1.svg" alt="wasa">
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="social">
+                            <img src="/image/s2.svg" alt="wgmail">
+                        </div>
+                    </a>
+
+                    <a href="#">
+                        <div class="social">
+                            <img src="/image/s3.svg" alt="instagram">
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script th:src="@{/javascript/script.js}"></script>
+
+
+</body>
+
+</html>
