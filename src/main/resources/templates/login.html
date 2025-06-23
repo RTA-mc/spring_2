@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+
+<head>      
     <title>Login</title>
     <meta charset="UTF-8">
+    <link th:href="@{/css/login.css}" rel="stylesheet" />
+
 </head>
 <body>
-    <h1>Iniciar Sesión</h1>
+<div class="container">
+   
+    <div class="left">
+        <img src="/image/login_imagen.jpg" class="login-image floating-img" id="img1" alt="Decorativa 1">
+        <img src="/image/login3.jpg" class="login-image floating-img" id="img2" alt="Decorativa 2">
+        <img src="/image/login4.jpg"class="login-image floating-img" id="img3" alt="Decorativa 3">
+    </div>
 
-    <form method="post" th:action="@{/login}">
-        <label for="correo">Correo:</label>
-        <input type="email" id="correo" name="correo" required />
-        <br/>
+ 
+    <div class="right">
+        <h1>Iniciar Sesión</h1>
+        <form method="post" th:action="@{/login}" onsubmit="return validarFormulario()">
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" required />
 
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required />
-        <br/>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required />
 
-        <button type="submit">Iniciar Sesión</button>
-    </form>
+            <div id="errorMensaje" class="error-mensaje" th:if="${param.error}" th:text="'Correo o contraseña incorrectos'"></div>
 
-    <p>¿No tienes cuenta? <a th:href="@{/registrar}">Regístrate aquí</a></p>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        
+        <p>¿No tienes cuenta? <a th:href="@{/registrar}">Regístrate aquí</a></p>
+    </div>
+</div>
+
+<script th:src="@{/javascript/login.js}"></script>
 </body>
 </html>
