@@ -47,7 +47,7 @@ public class UsuarioController {
     @PostMapping("/registrar")
     public String registrarUsuario(@ModelAttribute("usuario") UsuarioRegistroDTO registroDTO) {
         usuarioService.registrarNuevoUsuario(registroDTO);
-        return "redirect:/details";
+        return "redirect:/login";
     }
 
     // Mostrar página details
